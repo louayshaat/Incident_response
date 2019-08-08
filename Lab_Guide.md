@@ -27,18 +27,18 @@ To list the Amazon CloudWatch Logs Groups you have configured in each region, yo
 
 You must use the region ID such as *us-east-1* instead of the region name of *US East (N. Virginia)* that you see in the console. You can obtain a list of the regions by viewing them in the [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) or using the CLI command: 
 
-    ```
     aws ec2 describe-regions
-    ```
     
 To list the log groups you have in a region, replace the example ap-southeast-1 with your region:
-    ```
+
+
     aws logs describe-log-groups --region ap-southeast-1
-    ```
+
+
 The default output is json, and it will give you all details. If you want to list only the names in a table:
-    ```
-    aws logs describe-log-groups --output table --query 'logGroups[*].logGroupName' --region ap-southeast-1`
-    ```
+
+    aws logs describe-log-groups --output table --query 'logGroups[*].logGroupName' --region ap-southeast-1
+  
 ***
 
 ## 2. Identity & Access Management <a name="iam"></a>
