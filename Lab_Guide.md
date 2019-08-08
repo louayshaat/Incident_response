@@ -196,7 +196,7 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
 
    
 * Click **Review policy**.
-* Enter **Name** of *DenyAll* then click **Create policy**.
+* Enter name of **DenyAll** then click **Create policy**.
 
 #### 2.4.2 AWS CLI
 
