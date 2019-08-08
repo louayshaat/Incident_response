@@ -178,9 +178,7 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
 #### 2.4.1 AWS Console
 
 * Sign in to the AWS Management Console as an AWS IAM user or role in your AWS account, and open the AWS IAM console at [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/).
-* Click either **Groups**, **Users** or **Roles**  on the left, then click the name to modify.
-* Click **Permissions** tab.
-* Click **Add inline policy**.
+* Click on **Policies**  on the left, then click create policy.
 * Click the **JSON** tab then replace the example with the following:
     
 ```
@@ -193,8 +191,6 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
         ]
 }
 ```
-
-   
 * Click **Review policy**.
 * Enter name of **DenyAll** then click **Create policy**.
 
