@@ -219,7 +219,7 @@ Delete policy from a group:
 
 A Amazon VPC that has [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) enabled captures information about the IP traffic going to and from network interfaces in your Amazon VPC. 
 
-This log information may help you investigate how Amazon EC2 instances and other resources in your VPC are communicating, and what they are communicating with. You can follow the [Automated Deployment of VPC](../200_Automated_Deployment_of_VPC/README.md) lab for creating a Amazon VPC with Flow Logs enabled.
+This log information may help you investigate how Amazon EC2 instances and other resources in your VPC are communicating, and what they are communicating with. You can follow the [Automated Deployment of VPC](https://github.com/securityroadshow/aws-well-architected-labs/blob/master/Security/200_Automated_Deployment_of_VPC/README.md) lab for creating a Amazon VPC with Flow Logs enabled.
 
 ### 3.1 Investigate Amazon VPC Flow Logs
 
