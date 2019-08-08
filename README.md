@@ -21,7 +21,6 @@ The skills you learn will help you secure your workloads in alignment with the [
 ## [Start the Lab!](Lab_Guide.md)
 
 <BR>
-***
 
 ## License
 
