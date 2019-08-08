@@ -9,57 +9,70 @@
 
 ## 1. Getting Started <a name="getting_Started"></a>
 
-### 1.1 Install the AWS CLI
+### 1.1 Navigate to cloud9
 
-Although instructions in this lab are written for both AWS Management console and AWS CLI, its best to install the AWS CLI on the machine you will be using as you can modify the example commands to run different scenarios easily and across multiple AWS accounts.
+Cloud9 is a fully integrated IDE that will run with all the neccessary aws cli tools
 
-[Install the AWS CLI on macOS](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html)
-[Install the AWS CLI on Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html)
-[Install the AWS CLI on Windows](https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html)
-You will also need jq to parse json from the CLI:
-[Install jq ](https://stedolan.github.io/jq/download/)
 
-A best practice is to enforce the use of MFA, so if you misplace your AWS Management console password and/or access/secret key, there is nothing anyone can do without your MFA credentials. You can follow the instructions [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html) to configure AWS CLI to assume a role with MFA enforced.
 
 ### 1.2 Amazon CloudWatch Logs
 
-[Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) can be used to monitor, store, and access your log files from Amazon Elastic Compute Cloud (Amazon EC2) instances, AWS CloudTrail, Amazon Route 53, Amazon VPC Flow Logs, and other sources. It is a [best practice](https://wa.aws.amazon.com/wat.question.SEC_4.en.html) to enable logging and analyze centrally, and develop investigation proceses. Using the AWS CLI and developing runbooks for investigation into different events can be significantly faster than using the console. If your logs are stored in Amazon S3 instead, you can use [Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) to directly analyze data.
+[Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) can be used to monitor, store, and access your log files from Amazon Elastic Compute Cloud (Amazon EC2) instances, AWS CloudTrail, Amazon Route 53, Amazon VPC Flow Logs, and other sources. 
 
-To list the Amazon CloudWatch Logs Groups you have configured in each region, you can describe them. Note you must specify the region, if you need to query multiple regions you must run the command for each. You must use the region ID such as *us-east-1* instead of the region name of *US East (N. Virginia)* that you see in the console. You can obtain a list of the regions by viewing them in the [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) or using the CLI command: `aws ec2 describe-regions`.
-To list the log groups you have in a region, replace the example us-east-1 with your region:
-`aws logs describe-log-groups --region us-east-1`
+It is a [best practice](https://wa.aws.amazon.com/wat.question.SEC_4.en.html) to enable logging and analyze centrally, and develop investigation proceses. Using the AWS CLI and developing runbooks for investigation into different events can be significantly faster than using the console. 
+
+If your logs are stored in Amazon S3 instead, you can use [Amazon Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) to directly analyze data.
+
+To list the Amazon CloudWatch Logs Groups you have configured in each region, you can describe them. Note you must specify the region, if you need to query multiple regions you must run the command for each. 
+
+You must use the region ID such as *us-east-1* instead of the region name of *US East (N. Virginia)* that you see in the console. You can obtain a list of the regions by viewing them in the [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) or using the CLI command: 
+    ```
+    aws ec2 describe-regions
+    ```
+To list the log groups you have in a region, replace the example ap-southeast-1 with your region:
+    ```
+    aws logs describe-log-groups --region ap-southeast-1
+    ```
 The default output is json, and it will give you all details. If you want to list only the names in a table:
-`aws logs describe-log-groups --output table --query 'logGroups[*].logGroupName' --region us-east-1`
-
+    ```
+    aws logs describe-log-groups --output table --query 'logGroups[*].logGroupName' --region ap-southeast-1`
+    ```
 ***
 
 ## 2. Identity & Access Management <a name="iam"></a>
 
 ### 2.1 Investigate AWS CloudTrail
 
-As AWS CloudTrail logs API activity for [supported services](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html), it provides an audit trail of your AWS account that you can use to track history of an adversary. For example, listing recent access denied attempts in AWS CloudTrail may indicate attempts to escalate privilege unsuccessfully. Note that some services such as Amazon S3 have their own logging, for example read more about [Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html). You can enable AWS CloudTrail by following the [Automated Deployment of Detective Controls](../200_Automated_Deployment_of_Detective_Controls/README.md) lab.
+As AWS CloudTrail logs API activity for [supported services](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html), it provides an audit trail of your AWS account that you can use to track history of an adversary. 
+
+For example, listing recent access denied attempts in AWS CloudTrail may indicate attempts to escalate privilege unsuccessfully. Note that some services such as Amazon S3 have their own logging, for example read more about [Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html). 
+
+You can enable AWS CloudTrail by following the [Automated Deployment of Detective Controls](https://github.com/securityroadshow/auto_deploy/blob/master/README.md) lab.
 
 #### 2.1.1 AWS Console
 
 The AWS console provides a visual way of querying Amazon CloudWatch Logs, using [CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) and does not require any tools to be installed.
 
-1. Open the Amazon CloudWatch console at [https://console.aws.amazon.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/) and select your region.
-2. From the left menu, choose **Insights** under **Logs**.
-3. From the dropdown near the top select your CloudTrail Logs group, then the relative time to search back on the right.
-4. Copy the following example queries below into the query input, then click **Run query**.
+* Open the Amazon CloudWatch console at [https://console.aws.amazon.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/) and select your region.
+* From the left menu, choose **Insights** under **Logs**.
+* From the dropdown near the top select your CloudTrail Logs group, then the relative time to search back on the right.
+* Copy the following example queries below into the query input, then click **Run query**.
 
-**IAM access denied attempts:**
+**IAM Access Denied Attempts:**
 To list all IAM access denied attempts you can use the following example. Each of the line item results allows you to drill down to reveal further details.
-`filter errorCode like /Unauthorized|Denied|Forbidden/
-| fields awsRegion, userIdentity.arn, eventSource, eventName, sourceIPAddress, userAgent`
+    ```
+    filter errorCode like /Unauthorized|Denied|Forbidden/ | fields awsRegion, userIdentity.arn, eventSource, eventName, sourceIPAddress, userAgent
+    ```
 **IAM access key:**
 If you need to search for what actions an access key has performed you can search for it e.g. `AKIAIOSFODNN7EXAMPLE`:
-`filter userIdentity.accessKeyId ="AKIAIOSFODNN7EXAMPLE"
-| fields awsRegion, eventSource, eventName, sourceIPAddress, userAgent`
+    ```
+    filter userIdentity.accessKeyId ="AKIAIOSFODNN7EXAMPLE" | fields awsRegion, eventSource, eventName, sourceIPAddress, userAgent
+    ```
 **IAM source ip address:**
 If you suspect a particular IP address as an adversary you can search such as `192.0.2.1`:
-`filter sourceIPAddress = "192.0.2.1"
-| fields awsRegion, userIdentity.arn, eventSource, eventName, sourceIPAddress, userAgent`
+    ```
+    filter sourceIPAddress = "192.0.2.1" | fields awsRegion, userIdentity.arn, eventSource, eventName, sourceIPAddress, userAgent
+    ```
 **IAM access key created**
 An access key id will be part of the responseElements when its created so you can query that:
 `filter responseElements.credentials.accessKeyId ="AKIAIOSFODNN7EXAMPLE"
