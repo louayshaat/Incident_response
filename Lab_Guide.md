@@ -55,21 +55,23 @@ You can enable AWS CloudTrail by following the [Automated Deployment of Detectiv
 
 The AWS console provides a visual way of querying Amazon CloudWatch Logs, using [CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) and does not require any tools to be installed.
 
-* Open the Amazon CloudWatch console at [https://console.aws.amazon.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/) and select your region.
+* Open the Amazon CloudWatch console at [CloudWatch](https://console.aws.amazon.com/cloudwatch/) and select your region.
 * From the left menu, choose **Insights** under **Logs**.
 * From the dropdown near the top select your CloudTrail Logs group, then the relative time to search back on the right.
 * Copy the following example queries below into the query input, then click **Run query**.
 
 **IAM Access Denied Attempts:**
 To list all IAM access denied attempts you can use the following example. Each of the line item results allows you to drill down to reveal further details.
-    ```
+
+
     filter errorCode like /Unauthorized|Denied|Forbidden/ | fields awsRegion, userIdentity.arn, eventSource, eventName, sourceIPAddress, userAgent
-    ```
+
+
 **IAM access key:**
 If you need to search for what actions an access key has performed you can search for it e.g. `AKIAIOSFODNN7EXAMPLE`:
-    ```
+
     filter userIdentity.accessKeyId ="AKIAIOSFODNN7EXAMPLE" | fields awsRegion, eventSource, eventName, sourceIPAddress, userAgent
-    ```
+    
 **IAM source ip address:**
 If you suspect a particular IP address as an adversary you can search such as `192.0.2.1`:
     ```
