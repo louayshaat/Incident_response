@@ -26,9 +26,11 @@ If your logs are stored in Amazon S3 instead, you can use [Amazon Athena](https:
 To list the Amazon CloudWatch Logs Groups you have configured in each region, you can describe them. Note you must specify the region, if you need to query multiple regions you must run the command for each. 
 
 You must use the region ID such as *us-east-1* instead of the region name of *US East (N. Virginia)* that you see in the console. You can obtain a list of the regions by viewing them in the [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) or using the CLI command: 
+
     ```
     aws ec2 describe-regions
     ```
+    
 To list the log groups you have in a region, replace the example ap-southeast-1 with your region:
     ```
     aws logs describe-log-groups --region ap-southeast-1
