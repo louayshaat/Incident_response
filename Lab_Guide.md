@@ -25,7 +25,7 @@ Proceed once the stack is complete
 ### 1.2 Start Cloud9
 
 From the CLoudformation view, click on outputs and the URL for the cloud9 environment will be visible.
-Click on the link tom open your IDE.
+Click on the link to open your IDE.
 
 ### 1.3 Amazon CloudWatch Logs
 
