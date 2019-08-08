@@ -9,10 +9,17 @@
 
 ## 1. Getting Started <a name="getting_Started"></a>
 
-### 1.1 Navigate to cloud9
+### 1.1 Deploy Cloud9
 
-Cloud9 is a fully integrated IDE that will run with all the neccessary aws cli tools
+Using AWS CloudFormation, we are going to configure Cloud9.
 
+**AWS Cloud9** is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and terminal. Cloud9 comes prepackaged with essential tools for popular programming languages, including JavaScript, Python, PHP, and more, so you don’t need to install files or configure your development machine to start new projects.
+
+We will use Cloud9 to run all the AWS Cli Commands
+
+Launch CloudFormation Stack [here](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=GuardDuty-Hands-On&templateURL=https://securityroadshowbucket.s3-ap-southeast-2.amazonaws.com/cloud9.yml) to setup the Cloud9
+
+Give the stack a name and deploy
 
 
 ### 1.2 Amazon CloudWatch Logs
