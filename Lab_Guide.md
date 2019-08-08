@@ -182,8 +182,18 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
 * Click **Permissions** tab.
 * Click **Add inline policy**.
 * Click the **JSON** tab then replace the example with the following:
+    
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        { "Effect": "Deny", 
+        "Action": "*", 
+        "Resource": "*" }
+        ]
+}
+```
 
-    { "Statement": [ { "Effect": "Deny", "Action": "*", "Resource": "*" } ] }
    
 * Click **Review policy**.
 * Enter **Name** of *DenyAll* then click **Create policy**.
