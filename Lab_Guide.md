@@ -19,10 +19,15 @@ We will use Cloud9 to run all the AWS Cli Commands
 
 Launch CloudFormation Stack [here](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=GuardDuty-Hands-On&templateURL=https://securityroadshowbucket.s3-ap-southeast-2.amazonaws.com/cloud9.yml) to setup the Cloud9
 
-Give the stack a name and deploy
+Follow the default promots and click on create stack.
+Proceed once the stack is complete
 
+### 1.2 Start Cloud9
 
-### 1.2 Amazon CloudWatch Logs
+From the CLoudformation view, click on outputs and the URL for the cloud9 environment will be visible.
+Click on the link tom open your IDE.
+
+### 1.3 Amazon CloudWatch Logs
 
 [Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) can be used to monitor, store, and access your log files from Amazon Elastic Compute Cloud (Amazon EC2) instances, AWS CloudTrail, Amazon Route 53, Amazon VPC Flow Logs, and other sources. 
 
