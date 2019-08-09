@@ -9,25 +9,24 @@
 
 ## 1. Getting Started <a name="getting_Started"></a>
 
-### 1.1 Deploy Cloud9
+### 1.1 Start Cloud9
 
-Using AWS CloudFormation, we are going to configure Cloud9.
+We will use Cloud9 to run all the AWS CLI Commands
 
-**AWS Cloud9** is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and terminal. Cloud9 comes prepackaged with essential tools for popular programming languages, including JavaScript, Python, PHP, and more, so you don’t need to install files or configure your development machine to start new projects.
+From the Management Console search for Cloud9
+![Cloud9-search](Cloud9-1.png)
 
-We will use Cloud9 to run all the AWS Cli Commands
+This will redirect you to the pre-provisioned environments, you will see an environment pre-built called **ideforcli**. 
+Click on **Open IDE**
 
-Launch CloudFormation Stack [here](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=GuardDuty-Hands-On&templateURL=https://securityroadshowbucket.s3-ap-southeast-2.amazonaws.com/cloud9.yml) to setup the Cloud9
+![Cloud9-screen](Cloud9-2.png)
 
-Follow the default promots and click on create stack.
-Proceed once the stack is complete
+This will open the IDE where you can perform any cli based commands from here
 
-### 1.2 Start Cloud9
+![Cloud9-ide](Cloud9-3.png)
 
-From the CLoudformation view, click on outputs and the URL for the cloud9 environment will be visible.
-Click on the link to open your IDE.
 
-### 1.3 Amazon CloudWatch Logs
+### 1.2 Amazon CloudWatch Logs
 
 [Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) can be used to monitor, store, and access your log files from Amazon Elastic Compute Cloud (Amazon EC2) instances, AWS CloudTrail, Amazon Route 53, Amazon VPC Flow Logs, and other sources. 
 
