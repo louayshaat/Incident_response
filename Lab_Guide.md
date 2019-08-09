@@ -11,7 +11,7 @@
 
 ### 1.1 Start Cloud9
 
-We will use Cloud9 to run all the AWS CLI Commands
+We will use Cloud9 to run all the AWS CLI Commands in this Lab
 
 From the Management Console search for Cloud9
 ![Cloud9-search](Cloud9-1.png)
