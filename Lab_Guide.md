@@ -107,7 +107,7 @@ Listing buckets may indicate someone trying to gain access to your buckets. Note
     filter eventName ="ListBuckets"| fields awsRegion, eventSource, eventName, sourceIPAddress, userAgent
     
 
-#### 2.1.2 AWS CLI
+#### 2.1.2 AWS CLI (Performed in Cloud9)
 
 Remember you might need to update the *--log-group-name*, *--region* and/or *--start-time* parameter to a millisecond epoch start time of how far back you wish to search. You can use a web conversion tool such as [www.epochconverter.com](https://www.epochconverter.com/).
 
@@ -153,7 +153,7 @@ If you need to confirm the name of a role, user or group you can list:
 * Sign in to the AWS Management Console as an IAM user or role in your AWS account, and open the AWS IAM console at [IAM Console](https://console.aws.amazon.com/iam/).
 * Click Roles on the left, the role will be displayed and you can use the search field.
 
-#### 2.3.2 AWS CLI
+#### 2.3.2 AWS CLI (Performed in Cloud9)
 
     aws iam list-roles
     
@@ -193,7 +193,7 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
 * Click **Review policy**.
 * Enter name of **DenyAll** then click **Create policy**.
 
-#### 2.4.2 AWS CLI
+#### 2.4.2 AWS CLI (Performed in Cloud9)
 
 Block a role, modify *ROLENAME* to match your role name:
 
@@ -220,7 +220,7 @@ To delete the policy you just attached and restore the original permissions the 
 * Click **Delete role**.
 * Confirm the role to delete then click **Yes, delete**
 
-#### 2.5.2 AWS CLI
+#### 2.5.2 AWS CLI (Performed in Cloud9)
 
 Delete policy from a role:
 
