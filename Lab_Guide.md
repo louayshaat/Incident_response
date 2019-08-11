@@ -16,12 +16,12 @@ We will use Cloud9 to run all the AWS CLI Commands in this Lab
 From the Management Console search for Cloud9
 ![Cloud9-search](Cloud9-1.png)
 
-This will redirect you to the an environment pre-built called  **ideforcli**. 
+This will redirect you to the an environment pre-built called  **incidentreponse**. 
 Click on **Open IDE**
 
-![Cloud9-screen](Cloud9-2.png)
+![Cloud9-screen](Cloud9-2.1.png)
 
-This will open the IDE where you can perform any cli based commands from here
+This will open the web IDE where you can perform any cli based commands from here
 
 ![Cloud9-ide](Cloud9-3.png)
 
