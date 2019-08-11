@@ -195,18 +195,54 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
 
 #### 2.4.2 AWS CLI (Performed in Cloud9)
 
-Block a role, modify *ROLENAME* to match your role name:
+Create a new group
 
-    aws iam put-role-policy --role-name ROLENAME --policy-name DenyAll --policy-document '{ "Statement": [ { "Effect": "Deny", "Action": "*", "Resource": "*" } ] }'
+    aws iam create-group --group-name DenyGroup
+
+Create a new user
+
+    aws iam create-user --user-name DenyUser
+
+Add user to group
+
+    aws iam add-user-to-group --user-name DenyUser --group-name DenyGroup
     
-Block a user, modify *USERNAME* to match your user name:
+Create policy document
 
-    aws iam put-user-policy --user-name USERNAME --policy-name DenyAll --policy-document '{ "Statement": [ { "Effect": "Deny", "Action": "*", "Resource": "*" } ] }'
+```
+cat >> denypolicy.json <<EOL
+{
+   "Version": "2012-10-17",
+   "Statement": [
+   {
+     "Effect": "Allow",
+     "Principal": {
+        "Service": "ec2.amazonaws.com"
+     },
+   "Action": "sts:AssumeRole"
+   }
+ ]
+}  
+EOL
+```
+    
+Create role
+
+    aws iam create-role --role-name denyrole --assume-role-policy-document file://denypolicy.json
 
 
-Block a group, modify *GROUPNAME* to match your user name:
+Block a role:
 
-    aws iam put-group-policy --group-name GROUPNAME --policy-name DenyAll --policy-document '{ "Statement": [ { "Effect": "Deny", "Action": "*", "Resource": "*" } ] }'
+    aws iam put-role-policy --role-name denyrole --policy-name DenyAll --policy-document '{ "Statement": [ { "Effect": "Deny", "Action": "*", "Resource": "*" } ] }'
+    
+Block a user:
+
+    aws iam put-user-policy --user-name DenyUser --policy-name DenyAll --policy-document '{ "Statement": [ { "Effect": "Deny", "Action": "*", "Resource": "*" } ] }'
+
+
+Block a group:
+
+    aws iam put-group-policy --group-name DenyGroup --policy-name DenyAll --policy-document '{ "Statement": [ { "Effect": "Deny", "Action": "*", "Resource": "*" } ] }'
 
 ### 2.5 Delete inline deny policy
 
@@ -224,15 +260,15 @@ To delete the policy you just attached and restore the original permissions the 
 
 Delete policy from a role:
 
-    aws iam delete-role-policy --role-name ROLENAME --policy-name DenyAll
+    aws iam delete-role-policy --role-name denyrole --policy-name DenyAll
     
 Delete policy from a user:
 
-    aws iam delete-user-policy --user-name USERNAME --policy-name DenyAll
+    aws iam delete-user-policy --user-name DenyUser --policy-name DenyAll
     
 Delete policy from a group:
 
-    aws iam delete-group-policy --group-name GROUPNAME --policy-name DenyAll
+    aws iam delete-group-policy --group-name DenyGroup --policy-name DenyAll
 
 ## 3. Amazon VPC <a name="vpc"></a>
 
