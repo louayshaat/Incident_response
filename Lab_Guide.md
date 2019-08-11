@@ -16,7 +16,7 @@ We will use Cloud9 to run all the AWS CLI Commands in this Lab
 From the Management Console search for Cloud9
 ![Cloud9-search](Cloud9-1.png)
 
-This will redirect you to the pre-provisioned environments, you will see an environment pre-built called **ideforcli**. 
+This will redirect you to the an environment pre-built called  **ideforcli**. 
 Click on **Open IDE**
 
 ![Cloud9-screen](Cloud9-2.png)
