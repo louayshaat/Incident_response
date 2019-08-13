@@ -26,7 +26,7 @@ This will open the web IDE where you can perform any cli based commands from her
 ![Cloud9-ide](Cloud9-3.png)
 
 
-### 1.2 Amazon CloudWatch Logs
+### 1.2 Amazon CloudWatch Logs (Run Queries in AWS Cloud9)
 
 [Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) can be used to monitor, store, and access your log files from Amazon Elastic Compute Cloud (Amazon EC2) instances, AWS CloudTrail, Amazon Route 53, Amazon VPC Flow Logs, and other sources. 
 
@@ -36,7 +36,7 @@ If your logs are stored in Amazon S3 instead, you can use [Amazon Athena](https:
 
 To list the Amazon CloudWatch Logs Groups you have configured in each region, you can describe them. Note you must specify the region, if you need to query multiple regions you must run the command for each. 
 
-You must use the region ID such as *ap-southeast-1* instead of the region name of *Asia Pacific (Singapore)* that you see in the console. You can obtain a list of the regions by viewing them in the [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) or using the CLI command: 
+You must use the region ID such as *ap-southeast-1* instead of the region name of *Asia Pacific (Singapore)* that you see in the console. You can obtain a list of the regions by viewing them in the [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) or using the AWS CLI command: 
 
     aws ec2 describe-regions
     
@@ -62,7 +62,7 @@ For example, listing recent access denied attempts in AWS CloudTrail may indicat
 
 You can enable AWS CloudTrail by following the [Automated Deployment of Detective Controls](https://github.com/securityroadshow/auto_deploy/blob/master/README.md) lab.
 
-#### 2.1.1 AWS Console
+#### 2.1.1 AWS Console (Run Queries in Amazon CloudWatch)
 
 The AWS console provides a visual way of querying Amazon CloudWatch Logs, using [CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) and does not require any tools to be installed.
 
@@ -107,7 +107,7 @@ Listing buckets may indicate someone trying to gain access to your buckets. Note
     filter eventName ="ListBuckets"| fields awsRegion, eventSource, eventName, sourceIPAddress, userAgent
     
 
-#### 2.1.2 AWS CLI (Performed in Cloud9)
+#### 2.1.2 AWS CLI (Run Queries in AWS Cloud9)
 
 Remember you might need to update the *--log-group-name*, *--region* and/or *--start-time* parameter to a millisecond epoch start time of how far back you wish to search. You can use a web conversion tool such as [www.epochconverter.com](https://www.epochconverter.com/).
 
@@ -153,7 +153,7 @@ If you need to confirm the name of a role, user or group you can list:
 * Sign in to the AWS Management Console as an IAM user or role in your AWS account, and open the AWS IAM console at [IAM Console](https://console.aws.amazon.com/iam/).
 * Click Roles on the left, the role will be displayed and you can use the search field.
 
-#### 2.3.2 AWS CLI (Performed in Cloud9)
+#### 2.3.2 AWS CLI (Run Queries in AWS Cloud9)
 
     aws iam list-roles
     
@@ -193,7 +193,7 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
 * Click **Review policy**.
 * Enter name of **DenyAll** then click **Create policy**.
 
-#### 2.4.2 AWS CLI (Performed in Cloud9)
+#### 2.4.2 AWS CLI (Run Queries in AWS Cloud9)
 
 Create a new group
 
@@ -256,7 +256,7 @@ To delete the policy you just attached and restore the original permissions the 
 * Click **Delete role**.
 * Confirm the role to delete then click **Yes, delete**
 
-#### 2.5.2 AWS CLI (Performed in Cloud9)
+#### 2.5.2 AWS CLI (Run Queries in AWS Cloud9)
 
 Delete policy from a role:
 
