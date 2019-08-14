@@ -116,7 +116,7 @@ Remember you might need to update the *--log-group-name*, *--region* and/or *--s
 
 In Cloud9, please run the following command
 
-    sudo yum install jq
+    sudo yum install jq -y
 
 **IAM access denied attempts:**
 
