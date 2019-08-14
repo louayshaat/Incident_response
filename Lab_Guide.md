@@ -285,7 +285,7 @@ This log information may help you investigate how Amazon EC2 instances and other
 
 ### 3.1 Investigate Amazon VPC Flow Logs
 
-#### 3.1.1 AWS Management Console
+#### 3.1.1 AWS Management Console (Run Queries in Amazon CloudWatch)
 
 The AWS Management console provides a visual way of querying CloudWatch Logs, using [CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) and does not require any tools to be installed.
 
