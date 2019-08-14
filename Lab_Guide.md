@@ -112,6 +112,12 @@ Listing buckets may indicate someone trying to gain access to your buckets. Note
 Remember you might need to update the *--log-group-name*, *--region* and/or *--start-time* parameter to a millisecond epoch start time of how far back you wish to search. You can use a web conversion tool such as [www.epochconverter.com](https://www.epochconverter.com/).
 
 
+**Install jq in Cloud9**
+
+In Cloud9, please run the following command
+
+    sudo yum install jq
+
 **IAM access denied attempts:**
 
 To list all IAM access denied attempts you can use CloudWatch Logs with *--filter-pattern* parameter of `AccessDenied` for roles and `Client.UnauthorizedOperation` for users.
