@@ -98,7 +98,7 @@ An access key id will be part of the responseElements when its created so you ca
 **IAM users and roles created**
 Listing users and roles created can help identify unauthorized activity:
 
-    filter eventName="CreateUser" or eventName = "CreateRole" | fields requestParameters.userName, requestParameters.roleName, responseElements.user.arn, responseElements.role.arn, sourceIPAddress, eventTime, errorCode`
+    filter eventName="CreateUser" or eventName = "CreateRole" | fields requestParameters.userName, requestParameters.roleName, responseElements.user.arn, responseElements.role.arn, sourceIPAddress, eventTime, errorCode
     
 **S3 List Buckets**
 
