@@ -120,27 +120,28 @@ In Cloud9, please run the following command
 
 **IAM access denied attempts:**
 
-To list all IAM access denied attempts you can use CloudWatch Logs with *--filter-pattern* parameter of `AccessDenied` for roles and `Client.UnauthorizedOperation` for users.
+To list all IAM access denied attempts you can use CloudWatch Logs with *--filter-pattern* parameter of `AccessDenied` for roles and `Client.UnauthorizedOperation` for users. 
+Replace the --log-group-name with the log group name from your AWS Cloudwatch log group E.g. 'Detective-Controls-CloudTrailCWLogsGroup-XXXXXXXXXXXX'
 
-    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name CloudTrail/DefaultLogGroup --filter-pattern AccessDenied --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
+    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name <your_log_group_name> --filter-pattern AccessDenied --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
     
 **IAM access key:**
 
-If you need to search for what actions an access key has performed you can modify the *--filter-pattern* parameter to be the access key to search such as `AKIAIOSFODNN7EXAMPLE`:
+If you need to search for what actions an access key has performed you can modify the *--filter-pattern* parameter to be the access key to search such as `AKIAIOSFODNN7EXAMPLE`. Replace the --log-group-name with the log group name from your AWS Cloudwatch log group E.g. 'Detective-Controls-CloudTrailCWLogsGroup-XXXXXXXXXXXX'
 
-    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name CloudTrail/DefaultLogGroup --filter-pattern AKIAIOSFODNN7EXAMPLE --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
+    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name <your_log_group_name>  --filter-pattern AKIAIOSFODNN7EXAMPLE --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
 
 **IAM source ip address:**
 
-If you suspect a particular IP address as an adversary you can modify the *--filter-pattern* parameter to be the IP address to search such as `192.0.2.1`:
+If you suspect a particular IP address as an adversary you can modify the *--filter-pattern* parameter to be the IP address to search such as `192.0.2.1`. Replace the --log-group-name with the log group name from your AWS Cloudwatch log group E.g. 'Detective-Controls-CloudTrailCWLogsGroup-XXXXXXXXXXXX'
 
-    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name CloudTrail/DefaultLogGroup --filter-pattern 192.0.2.1 --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
+    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name <your_log_group_name>  --filter-pattern 192.0.2.1 --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
     
 **S3 List Buckets**
 
-Listing buckets may indicate someone trying to gain access to your buckets. Note that [Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html) needs to be enabled on each bucket to gain further S3 access details.
+Listing buckets may indicate someone trying to gain access to your buckets. Note that [Amazon S3 server access logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html) needs to be enabled on each bucket to gain further S3 access details. Replace the --log-group-name with the log group name from your AWS Cloudwatch log group E.g. 'Detective-Controls-CloudTrailCWLogsGroup-XXXXXXXXXXXX'
 
-    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name CloudTrail/DefaultLogGroup --filter-pattern ListBuckets --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
+    aws logs filter-log-events --region ap-southeast-1 --start-time 1551402000000 --log-group-name <your_log_group_name>  --filter-pattern ListBuckets --output json --query 'events[*].message'| jq -r '.[] | fromjson | .userIdentity, .sourceIPAddress, .responseElements'
     
 
 ### 2.2 Block access in AWS IAM
