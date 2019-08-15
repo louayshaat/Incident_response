@@ -201,6 +201,9 @@ Attaching an explicit deny policy to an AWS IAM role, user or group will quickly
 * Enter name of **DenyAll** then click **Create policy**.
 
 #### 2.4.2 AWS CLI (Run Queries in AWS Cloud9)
+Before you run the commands, you will need to update the temporary keys with your Event Engine credentials.
+Browse to [Event Engine](https://dashboard.eventengine.run) and click on **AWS Console** and copy the credentails section and paste that in Cloud9
+
 
 Create a new group
 
